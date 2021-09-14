@@ -42,9 +42,9 @@ const maxBalloons = (str) => {
   obj.l = Math.floor(obj.l);
   obj.o = Math.floor(obj.o);
 
-  return Math.min(Object.values(obj));
+  return Math.min(...Object.values(obj));
 }
 
-console.log(maxBalloons('balloon'));
+console.log(maxBalloons('bbbaaaaalllllooooonn'));
 
 module.exports = maxBalloons;
