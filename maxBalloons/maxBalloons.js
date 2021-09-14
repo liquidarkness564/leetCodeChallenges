@@ -23,7 +23,28 @@ Output: 0
 */
 
 const maxBalloons = (str) => {
-  // TODO: implement
+  let obj = {
+    b: 0,
+    a: 0,
+    l: 0,
+    o: 0,
+    n: 0
+  }
+
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === 'l' || str[i] === 'o') {
+      obj[str[i]] += 0.5;
+    } else if (str[i] === 'b' || str[i] === 'a' || str[i] === 'n') {
+      obj[str[i]] += 1
+    }
+  }
+
+  obj.l = Math.floor(obj.l);
+  obj.o = Math.floor(obj.o);
+
+  return Math.min(Object.values(obj));
 }
+
+console.log(maxBalloons('balloon'));
 
 module.exports = maxBalloons;
