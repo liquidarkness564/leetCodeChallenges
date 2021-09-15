@@ -30,12 +30,50 @@ Input: arr = [100]
 Output: 1
 */
 
-/**
- * @param {number[]} arr
- * @return {number}
- */
- var maxTurbulenceSize = function(arr) {
-  // TODO: implement
+var maxTurbulenceSize = function(arr) {
+  arr = arr || [];
+  if (!arr.length) { return 0; }
+  let max = 1;
+  for (let i = 0; i < arr.length; i++) {
+    if (i !== arr.length - 1) {
+      for (let j = i + 1; j < arr.length; j++) {
+        let turb = arr.slice(i, j + 1)
+        if (isTurbulent(turb)) {
+          if (turb.length > max) { max = turb.length; }
+        }
+      }
+    }
+  }
+  return max;
 };
+
+var isTurbulent = arr => {
+  if (arr[0] < arr[1]) {
+      for (let i = 0; i < arr.length; i++) {
+          if (i !== arr.length - 1) {
+              if (i % 2 === 0) {
+                  if (!(arr[i] < arr[i + 1])) { return false; }
+              } else {
+                  if (!(arr[i] > arr[i + 1])) { return false; }
+              }
+          }
+      }
+  } else if (arr[0] > arr[1]) {
+      for (let i = 0; i < arr.length; i++) {
+          if (i !== arr.length - 1) {
+              if (i % 2 === 0) {
+                  if (!(arr[i] > arr[i + 1])) { return false; }
+              } else {
+                  if (!(arr[i] < arr[i + 1])) { return false; }
+              }
+          }
+      }
+  } else {
+      return false;
+  }
+  return true;
+}
+
+console.log(maxTurbulenceSize([2, 2, 1, 2, 1, 2, 1, 1, 3]))
 
 module.exports = maxTurbulenceSize;
