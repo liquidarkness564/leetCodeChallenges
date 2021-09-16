@@ -51,7 +51,7 @@ const makeSpiralMatrix = (matrix) => {
     for (let i = topBound; i <= bottomBound; i++) {
       spiral.push(matrix[i][leftBound]);
     }
-  } else {
+  } else if (topBound === bottomBound) {
     for (let i = leftBound; i <= rightBound; i++) {
       spiral.push(matrix[topBound][i]);
     }
