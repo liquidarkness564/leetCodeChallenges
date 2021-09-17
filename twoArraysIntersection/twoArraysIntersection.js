@@ -21,6 +21,22 @@
 var intersect = function(nums1, nums2) {
   nums1 = nums1 || [];
   nums2 = nums2 || [];
+  let string1 = nums1.join('');
   let string2 = nums2.join('');
-
+  let inter = '';
+  for (let i = 0; i < string1.length; i++) {
+    for (let j = i; j < string1.length; j++) {
+      if (string2.includes(string1.slice(i, j+1)) || string2.includes(string1.split('').reverse('').join('').slice(i, j+1))) {
+        if (string1.slice(i, j+1).length > inter.length) {
+          inter = string1.slice(i, j+1);
+        }
+      }
+    }
+  }
+  inter = inter.split('');
+  return inter.map(i => Number(i));
 };
+
+let nums1 = [2, 1];
+let nums2 = [1, 1];
+console.log(intersect(nums1, nums2));
