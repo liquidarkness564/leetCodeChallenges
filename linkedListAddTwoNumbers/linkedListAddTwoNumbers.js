@@ -64,3 +64,7 @@ let node21 = new ListNode(8, node22);
 // final = 7931;
 
 console.log(addTwoNumbers(node11, node21));
+
+module.exports = {
+    addTwoNumbers, stringReverse
+};
