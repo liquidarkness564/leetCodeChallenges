@@ -22,8 +22,8 @@ class Node {
  var rangeSumBST = function(root, low, high) {
   let sum = 0;
   const binarySum = (node) => {
-    if (node.right === undefined && node.left === undefined) { return; }
     if (node.val >= low && node.val <= high) { sum += node.val; }
+    if (node.right === undefined && node.left === undefined) { return; }
     node.right ? binarySum(node.right) : null
     node.left ? binarySum(node.left) : null
   }
